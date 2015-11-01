@@ -1,0 +1,5 @@
+# Compiled stuff
+*.exe
+*.out
+*.obj
+*.o
