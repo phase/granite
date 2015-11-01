@@ -20,6 +20,7 @@ ushort | 2 bytes | 0 to 65,535
 int | 4 bytes | -2,147,483,648 to 2,147,483,647
 uint | 4 bytes | 0 to 4,294,967,295
 
+###Hello World
 ```c
 //imports take local files over installed headers
     //i.e. search through local files for this, if found
@@ -33,10 +34,30 @@ main() {
 }
 ```
 Gets compiled to
-```
+```c
 #include <stdio.h>
 
 void main() {
     printf("Hello, World!");
+}
+```
+
+###Mixins
+Mixins allow you to specify new tokens that add in code.
+
+```c
+#mixin TOKEN printf("This is in a token")
+main() {
+    TOKEN
+}
+```
+You can access local and global variables by name, because the compiler just inlines the code.
+```c
+#mixin W printf("%d",w);
+
+main() {
+    W //throws error
+    int w = 7;
+    W //prints 7
 }
 ```
